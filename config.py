@@ -1,6 +1,9 @@
 feeds = [
     "https://pycon.blogspot.com/feeds/posts/default",
-]  # Example, add all URLs that you want in your feed in here, no filters added just yet
+    "https://realpython.com/atom.xml?format=xml",
+    "https://news.ycombinator.com/rss",
+    "https://explaining.software/rss",
+]
 
 headers = {
     "Cache-Control": "max-age=864000"
