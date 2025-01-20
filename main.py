@@ -16,7 +16,7 @@ def compose_feed():
     html = config.html_head
     composed_feed = ""
     for feed_url in config.feeds:
-        composed_feed += feed.dict_to_markdown(feed.feed_to_dict(feed_url))
+        composed_feed += feed.dict_to_markdown(feed.feed_to_dict(feed_url=feed_url, limit=config.limit))
     if composed_feed:
         try:
             html += markdown.markdown(composed_feed)
