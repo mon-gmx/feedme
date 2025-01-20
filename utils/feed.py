@@ -6,7 +6,7 @@ from uuid import uuid4
 log = logging.getLogger(__name__)
 
 
-def feed_to_dict(feed_url: str) -> dict:
+def feed_to_dict(feed_url: str, limit: int = 10) -> dict:
     feed_dict = {}
     try:
         feed = feedparser.parse(feed_url)
@@ -23,8 +23,8 @@ def feed_to_dict(feed_url: str) -> dict:
             "entries": [],
         }
         feed_entries = getattr(feed, "entries", [])
-        if len(feed_entries) > 10:
-            feed_entries = feed_entries[-10:]
+        if len(feed_entries) > limit:
+            feed_entries = feed_entries[-limit:]
         for entry in feed_entries[::-1]:
             if getattr(entry, "summary"):
                 feed_dict["entries"].append(
