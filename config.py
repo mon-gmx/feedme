@@ -1,3 +1,5 @@
+feed_limit = 30
+
 feeds = [
     "https://pycon.blogspot.com/feeds/posts/default",
     "https://realpython.com/atom.xml?format=xml",
