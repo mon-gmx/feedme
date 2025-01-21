@@ -5,13 +5,28 @@ import markdown
 from utils import feed
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse
-from functools import lru_cache
+from functools import lru_cache, wraps
+from datetime import datetime, timedelta, UTC
 
 app = FastAPI()
 log = logging.getLogger(__name__)
 
+def ttl_lru_cache(ttl: int = 1800, maxsize: int = 128):
+    def wrapper_cache(func):
+        func = lru_cache(maxsize=maxsize)(func)
+        func.ttl = timedelta(seconds=seconds)
+        func.expiry = datetime.now(UTC) + func.ttl
+        @wraps(func)
+        # wrapper function to clear cache after expiration
+        def wrapped_func(*args, **kwargs):
+            if datetime.now(UTC) > func.expiry:
+                func.cache_clear()
+                func.expiration = datetime.now(UTC) + func.ttl
+            return func(*args, **kwargs)
+        return wrapped_func
+    return wrapper_cache
 
-@lru_cache(maxsize=None)
+@ttl_lru_cache(ttl=config.cache_ttl, maxsize=None)
 def compose_feed():
     html = config.html_head
     composed_feed = ""
