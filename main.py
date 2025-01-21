@@ -14,7 +14,7 @@ log = logging.getLogger(__name__)
 def ttl_lru_cache(ttl: int = 1800, maxsize: int = 128):
     def wrapper_cache(func):
         func = lru_cache(maxsize=maxsize)(func)
-        func.ttl = timedelta(seconds=seconds)
+        func.ttl = timedelta(seconds=ttl)
         func.expiry = datetime.now(UTC) + func.ttl
         @wraps(func)
         # wrapper function to clear cache after expiration
