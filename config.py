@@ -1,5 +1,7 @@
 feed_limit = 30
 
+cache_ttl = 8 * 3600  # 8 hours
+
 feeds = [
     "https://pycon.blogspot.com/feeds/posts/default",
     "https://realpython.com/atom.xml?format=xml",
