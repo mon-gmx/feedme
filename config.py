@@ -3,10 +3,14 @@ feed_limit = 30
 cache_ttl = 8 * 3600  # 8 hours
 
 feeds = [
-    "https://pycon.blogspot.com/feeds/posts/default",
-    "https://realpython.com/atom.xml?format=xml",
+    "https://www.howtogeek.com/feed/",
     "https://news.ycombinator.com/rss",
-    "https://explaining.software/rss",
+    "https://realpython.com/atom.xml?format=xml",
+    "https://www.cyberciti.com/feed/",
+    "https://feeds.feedburner.com/PythonSoftwareFoundationNews",
+    "https://www.linuxjournal.com/node/feed",
+    "https://go.dev/blog/feed.atom?format=xml",
+    "https://blog.bytebytego.com/feed",
 ]
 
 headers = {
