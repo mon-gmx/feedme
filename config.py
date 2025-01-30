@@ -28,3 +28,5 @@ html_head = """
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </head>
 """
+
+images_src_url = "https://www.reddit.com/r/wallpapers.json"
