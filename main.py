@@ -33,6 +33,10 @@ def ttl_lru_cache(ttl: int = 1800, maxsize: int = 128):
 
 
 @ttl_lru_cache(ttl=config.cache_ttl, maxsize=None)
+def load_cached_feed(feed_url):
+    return feed.feed_to_dict(feed_url=feed_url, limit=config.feed_limit)
+
+
 def compose_feed():
     html = config.html_head
     image_header = feed.get_random_image(config.images_src_url)
@@ -41,10 +45,16 @@ def compose_feed():
         html += f"  {image_header}\n"
         html += f"</div>\n"
     composed_feed = ""
-    for feed_url in config.feeds:
-        composed_feed += feed.dict_to_markdown(
-            feed.feed_to_dict(feed_url=feed_url, limit=config.feed_limit)
-        )
+    for feed in config.feeds:
+        feed_url, is_cached = feed
+        if is_cached:
+            composed_feed += feed.dict_to_markdown(
+                load_cached_feed(feed_url)
+            )
+        else:
+            composed_feed += feed.dict_to_markdown(
+                feed.feed_to_dict(feed_url=feed_url, limit=config.feed_limit)
+            )
     if composed_feed:
         try:
             html += markdown.markdown(composed_feed)
