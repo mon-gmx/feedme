@@ -3,15 +3,15 @@ feed_limit = 30
 cache_ttl = 8 * 3600  # 8 hours
 
 feeds = [
-    "https://www.howtogeek.com/feed/",
-    "https://news.ycombinator.com/rss",
-    "https://realpython.com/atom.xml?format=xml",
-    "https://www.cyberciti.com/feed/",
-    "https://feeds.feedburner.com/PythonSoftwareFoundationNews",
-    "https://www.linuxjournal.com/node/feed",
-    "https://go.dev/blog/feed.atom?format=xml",
-    "https://blog.bytebytego.com/feed",
-]
+    ("https://www.howtogeek.com/feed/", True)
+    ("https://news.ycombinator.com/rss", False)
+    ("https://realpython.com/atom.xml?format=xml", False)
+    ("https://www.cyberciti.com/feed/", False)
+    ("https://feeds.feedburner.com/PythonSoftwareFoundationNews", True)
+    ("https://www.linuxjournal.com/node/feed", True)
+    ("https://go.dev/blog/feed.atom?format=xml", True)
+    ("https://blog.bytebytego.com/feed", False)
+]  # tuple list, (URL, is_cached?)
 
 headers = {
     "Cache-Control": "max-age=864000"
