@@ -45,8 +45,8 @@ def compose_feed():
         html += f"  {image_header}\n"
         html += f"</div>\n"
     composed_feed = ""
-    for feed in config.feeds:
-        feed_url, is_cached = feed
+    for item in config.feeds:
+        feed_url, is_cached = item
         if is_cached:
             composed_feed += feed.dict_to_markdown(
                 load_cached_feed(feed_url)
