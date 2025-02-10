@@ -48,7 +48,7 @@ def dict_to_markdown(feed_dict: dict) -> str:
         markdown_entry = (
             f'<div class="container-lg" align="right">\n'
             f"  <h2>{feed_dict['title']}\n"
-            f"  <a href=\"{feed_dict['url']}\">&#x1F517;</a>\n</h2>\n"
+            f"  <a href=\"{feed_dict['url']}\" target=\"_blank\">&#x1F517;</a>\n</h2>\n"
             f"  <h3>Description: {feed_dict['subtitle']}</h3>\n"
             f"  <i>{feed_dict['summary']}</i><br/>\n"
             f"</div>\n"  # container for feed
