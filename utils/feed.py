@@ -66,7 +66,7 @@ def dict_to_markdown(feed_dict: dict) -> str:
                 f'        <button class="btn text-left font-weight-bold" type="button" data-toggle="collapse" '
                 f'data-target="#panel_{entry[0]}" data-parent="#accordion_{accordion_id}">\n'
             )
-            markdown_entry += f"        {entry[1]['title']}<a href=\"{entry[1]['url']}\">&#x1F517;</a><br/>\n"
+            markdown_entry += f"        {entry[1]['title']}<a href=\"{entry[1]['url']}\" target=\"_blank\">&#x1F517;</a><br/>\n"
             markdown_entry += f"          <i>{entry[1]['date']}</i>\n"
             markdown_entry += f"        </button>\n"
             markdown_entry += f"      </h2>\n"
