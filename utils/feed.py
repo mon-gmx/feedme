@@ -17,7 +17,6 @@ def feed_to_dict(feed_url: str, limit: int = 10) -> dict:
         log.error(f"Failed to read the URL, {error}")
     if getattr(feed, "feed") and getattr(feed, "entries"):
         feed_dict = {
-            "url": feed_url,
             "title": getattr(feed.feed, "title", "Untitled feed"),
             "subtitle": getattr(feed.feed, "subtitle", "No description"),
             "summary": getattr(feed, "summary", "No summary"),
@@ -48,7 +47,6 @@ def dict_to_markdown(feed_dict: dict) -> str:
         markdown_entry = (
             f'<div class="container-lg" align="right">\n'
             f"  <h2>{feed_dict['title']}\n"
-            f"  <a href=\"{feed_dict['url']}\" target=\"_blank\">&#x1F517;</a>\n</h2>\n"
             f"  <h3>Description: {feed_dict['subtitle']}</h3>\n"
             f"  <i>{feed_dict['summary']}</i><br/>\n"
             f"</div>\n"  # container for feed
@@ -66,7 +64,7 @@ def dict_to_markdown(feed_dict: dict) -> str:
                 f'        <button class="btn text-left font-weight-bold" type="button" data-toggle="collapse" '
                 f'data-target="#panel_{entry[0]}" data-parent="#accordion_{accordion_id}">\n'
             )
-            markdown_entry += f"        {entry[1]['title']}<a href=\"{entry[1]['url']}\" target=\"_blank\">&#x1F517;</a><br/>\n"
+            markdown_entry += f"        {entry[1]['title']}<a href=\"{entry[1]['url']}\" target=\"_blank\">&#x1F680;</a><br/>\n"
             markdown_entry += f"          <i>{entry[1]['date']}</i>\n"
             markdown_entry += f"        </button>\n"
             markdown_entry += f"      </h2>\n"
